@@ -1,0 +1,128 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html, body, #root {
+  min-height: 100%;
+  background: #000;
+}
+
+body {
+  font-family: 'NVIDIA-EMEA', Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar — thin, dark, green hover */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: #0a0a0a; }
+::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: #76b900; }
+
+@layer components {
+  .nv-btn-primary {
+    @apply inline-flex items-center justify-center gap-2 bg-transparent text-white px-[13px] py-[11px] rounded-nv
+           border-2 border-nv-green font-nv text-[16px] font-bold leading-tight tracking-tight
+           transition-colors duration-150
+           hover:bg-nv-teal-hover hover:text-white
+           active:bg-nv-blue-active active:border-[#003eff]
+           focus:outline-none focus:ring-2 focus:ring-black;
+  }
+  .nv-btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 bg-transparent text-white px-[13px] py-[11px] rounded-nv
+           border border-nv-green font-nv text-[16px] font-bold leading-tight
+           transition-colors duration-150
+           hover:bg-nv-teal-hover hover:text-white;
+  }
+  .nv-btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 bg-transparent text-white px-[13px] py-[11px] rounded-nv
+           border border-nv-gray-border font-nv text-[16px] font-bold leading-tight
+           transition-colors duration-150
+           hover:border-nv-green hover:text-nv-green;
+  }
+  .nv-btn-danger {
+    @apply inline-flex items-center justify-center gap-2 bg-transparent text-white px-[13px] py-[11px] rounded-nv
+           border-2 border-nv-red font-nv text-[16px] font-bold leading-tight
+           transition-colors duration-150
+           hover:bg-nv-red hover:text-white;
+  }
+  .nv-label {
+    @apply text-[10px] font-bold uppercase tracking-[0.1em] text-nv-green;
+  }
+  .nv-eyebrow {
+    @apply text-[14px] font-bold uppercase tracking-[0.08em] text-nv-green;
+  }
+  .nv-card {
+    @apply bg-nv-near-black rounded-nv border border-nv-gray-border/60 shadow-nv
+           transition-all duration-200;
+  }
+  .nv-card:hover {
+    box-shadow: rgba(0,0,0,0.45) 0 0 14px 0;
+    border-color: rgba(118,185,0,0.35);
+  }
+  .nv-input {
+    @apply w-full bg-nv-black border border-nv-gray-border text-white rounded-nv px-3 py-2
+           font-nv text-[15px] placeholder:text-nv-gray-500
+           focus:outline-none focus:border-nv-green transition-colors;
+  }
+  .nv-chip {
+    @apply inline-flex items-center gap-2 px-3 py-[6px] rounded-nv border border-nv-gray-border
+           text-[14px] font-bold uppercase tracking-wide text-nv-gray-300
+           cursor-pointer transition-colors select-none hover:border-nv-green hover:text-white;
+  }
+  .nv-chip.is-selected {
+    @apply border-nv-green text-nv-green;
+  }
+  .nv-link {
+    @apply text-nv-green font-bold uppercase tracking-wide text-[14px]
+           hover:text-nv-link-hover transition-colors;
+    border-bottom: 2px solid #76b900;
+    padding-bottom: 1px;
+  }
+  .nv-link:hover { border-bottom-color: #3860be; }
+
+  .nv-divider {
+    @apply h-px w-full bg-gradient-to-r from-transparent via-nv-gray-border to-transparent;
+  }
+
+  /* Grid background for hero sections */
+  .nv-grid-bg {
+    background-image:
+      linear-gradient(rgba(118,185,0,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(118,185,0,0.06) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .nv-radial-green {
+    background:
+      radial-gradient(ellipse at top left, rgba(118,185,0,0.22), transparent 55%),
+      radial-gradient(ellipse at bottom right, rgba(229,32,32,0.18), transparent 55%);
+  }
+  /* Dragon-scale fish-scale pattern, used as background overlay on the leaderboard hero */
+  .dragon-scales {
+    background-image:
+      radial-gradient(circle at 50% 100%, rgba(118,185,0,0.30) 0 6px, transparent 7px),
+      radial-gradient(circle at 50% 100%, rgba(118,185,0,0.30) 0 6px, transparent 7px);
+    background-size: 28px 22px, 28px 22px;
+    background-position: 0 0, 14px 11px;
+  }
+  .dragon-radial {
+    background:
+      radial-gradient(ellipse at center, rgba(118,185,0,0.45), transparent 55%),
+      radial-gradient(ellipse at top, rgba(118,185,0,0.20), transparent 60%),
+      radial-gradient(ellipse at bottom, rgba(77,19,104,0.30), transparent 55%);
+  }
+}
+
+/* Shimmer text for ticker */
+.nv-shimmer {
+  background: linear-gradient(90deg,#76b900 0%,#bff230 40%,#76b900 80%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 6s linear infinite;
+}
